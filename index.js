@@ -70,7 +70,9 @@ inquirer
 
 function generateReadMe(response) {
     fs.writeFile('README.md',
-`# ${response.title}
+`${renderLicense(response.license)}
+
+# ${response.title}
 
 ## Description\n
 ${response.description}
@@ -100,7 +102,50 @@ ${response.contribution}
 ${response.testInstructions}
 
 ## Questions\n
-Visit my GitHub profile: https://github.com/${response.username}
+Visit my GitHub profile: https://github.com/${response.username}\n
 For any questions, please reach out to me via email: ${response.email}`, 
     (err) => err ? console.error(err) : console.log('Success!'));
+}
+
+function renderLicense(license){
+    let licenseURL = '';
+    switch (license){
+        case 'Apache license 2.0':
+            licenseURL = '![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)';
+            break;
+        case 'Boost Software License 1.0':
+            licenseURL = '![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)';
+            break;
+        case 'BSD 2-clause "Simplified" license':
+            licenseURL = '![License](https://img.shields.io/badge/License-BSD_2--Clause-orange.svg)';
+            break;
+        case 'BSD 3-clause "New" or "Revised" license':
+            licenseURL = '![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)';
+            break;
+        case 'Creative Commons Zero v1.0 Universal':
+            licenseURL = '![License: CC0-1.0](https://licensebuttons.net/l/zero/1.0/80x15.png)';
+            break;
+        case 'Eclipse Public License 2.0':
+            licenseURL = '![License](https://img.shields.io/badge/License-EPL_2.0-red.svg)';
+            break;
+        case 'GNU Affero General Public License v3.0':
+            licenseURL = '![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)';
+            break;
+        case 'GNU General Public License v2.0':
+            licenseURL = '![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)';
+            break;
+        case 'GNU Lesser General Public License v2.1':
+            licenseURL = '![License: LGPL v3](https://img.shields.io/badge/License-LGPL_v2.1-blue.svg)';
+            break;
+        case 'MIT':
+            licenseURL = '![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)';
+            break;
+        case 'Mozilla Public License 2.0':
+            licenseURL = '![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)';
+            break;
+        case 'The Unlicense':
+            licenseURL = '![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)';
+            break;
+    }
+    return licenseURL;
 }
