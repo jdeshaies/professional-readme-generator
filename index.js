@@ -17,6 +17,7 @@ inquirer
       type: "input",
       message: "Installation Instructions:",
       name: "installation",
+      default: "npm install"
     },
     {
       type: "input",
@@ -77,11 +78,12 @@ ${response.description}\n
 - [Questions](#questions)
 \n
 ## Installation\n
-${response.installation}\n
+Follow these steps to install and set up this application:
+1. ${response.installation}\n
 ## Usage\n
 ${response.usage}\n
 ## License\n
-${response.license}\n
+Distributed under the ${response.license} license.\n
 ## Contributing\n
 ${response.contribution}\n
 ## Tests\n
