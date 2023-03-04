@@ -72,7 +72,7 @@ ${response.description}\n
 - [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
-- [Contributing] (#contributing)
+- [Contributing](#contributing)
 - [Tests](#tests)
 - [Questions](#questions)
 \n
@@ -80,10 +80,15 @@ ${response.description}\n
 ${response.installation}\n
 ## Usage\n
 ${response.usage}\n
+## License\n
+${response.license}\n
 ## Contributing\n
 ${response.contribution}\n
 ## Tests\n
-${response.testInstructions}`, 
+${response.testInstructions}\n
+## Questions\n
+Visit my GitHub profile: https://github.com/${response.username}\n
+For any questions, please reach out to me via email: ${response.email}`, 
     (err) => err ? console.error(err) : console.log("Success!")
     )
   );
