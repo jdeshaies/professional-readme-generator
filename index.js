@@ -68,6 +68,14 @@ inquirer
 `# ${response.title}\n
 ## Description\n
 ${response.description}\n
+## Table of Contents\n
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributing] (#contributing)
+- [Tests](#tests)
+- [Questions](#questions)
+\n
 ## Installation\n
 ${response.installation}\n
 ## Usage\n
