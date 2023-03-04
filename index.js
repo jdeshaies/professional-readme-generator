@@ -49,8 +49,18 @@ inquirer
         "GNU Lesser General Public License v2.1",
         "MIT",
         "Mozilla Public License 2.0",
-        "The Unlicense"
-      ]
+        "The Unlicense",
+      ],
+    },
+    {
+      type: "input",
+      message: "GitHub Username:",
+      name: "username",
+    },
+    {
+      type: "input",
+      message: "Email Address:",
+      name: "email",
     },
   ])
   .then((response) =>
