@@ -17,7 +17,7 @@ inquirer
       type: "input",
       message: "Installation Instructions:",
       name: "installation",
-      default: "npm install"
+      default: "npm install",
     },
     {
       type: "input",
@@ -64,33 +64,43 @@ inquirer
       name: "email",
     },
   ])
-  .then((response) =>
-    fs.writeFile("README.md", 
-`# ${response.title}\n
+  .then(
+    (response) => generateReadMe(response), (err) => (err ? console.error(err) : console.log("Success!"))
+  );
+
+function generateReadMe(response) {
+    fs.writeFile('README.md',
+`# ${response.title}
+
 ## Description\n
-${response.description}\n
-## Table of Contents\n
+${response.description}
+
+## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
 - [Contributing](#contributing)
 - [Tests](#tests)
 - [Questions](#questions)
-\n
+
 ## Installation\n
 Follow these steps to install and set up this application:
-1. ${response.installation}\n
+1. ${response.installation}
+
 ## Usage\n
-${response.usage}\n
+${response.usage}
+
 ## License\n
-Distributed under the ${response.license} license.\n
+Application covered under the ${response.license} license.
+
 ## Contributing\n
-${response.contribution}\n
+${response.contribution}
+
 ## Tests\n
-${response.testInstructions}\n
+${response.testInstructions}
+
 ## Questions\n
-Visit my GitHub profile: https://github.com/${response.username}\n
+Visit my GitHub profile: https://github.com/${response.username}
 For any questions, please reach out to me via email: ${response.email}`, 
-    (err) => err ? console.error(err) : console.log("Success!")
-    )
-  );
+    (err) => err ? console.error(err) : console.log('Success!'));
+}
