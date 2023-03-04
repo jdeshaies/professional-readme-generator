@@ -68,6 +68,7 @@ inquirer
     (response) => generateReadMe(response), (err) => (err ? console.error(err) : console.log("Success!"))
   );
 
+// Function to create the README page depending on the user input
 function generateReadMe(response) {
     fs.writeFile('README.md',
 `${renderLicense(response.license)}
@@ -107,6 +108,7 @@ For any questions, please reach out to me via email: ${response.email}`,
     (err) => err ? console.error(err) : console.log('Success!'));
 }
 
+// Returns the license URL to display badge depending on the license chosen
 function renderLicense(license){
     let licenseURL = '';
     switch (license){
