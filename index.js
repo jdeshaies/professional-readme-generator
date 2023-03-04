@@ -17,6 +17,7 @@ inquirer
       type: "input",
       message: "Installation Instructions:",
       name: "installation",
+      default: "npm install",
     },
     {
       type: "input",
@@ -31,7 +32,7 @@ inquirer
     {
       type: "input",
       message: "Test Instructions:",
-      name: "test-instructions",
+      name: "testInstructions",
     },
     {
       type: "list",
@@ -63,8 +64,91 @@ inquirer
       name: "email",
     },
   ])
-  .then((response) =>
-    fs.writeFile("README.md", JSON.stringify(response), (err) =>
-      err ? console.error(err) : console.log("Success!")
-    )
+  .then(
+    (response) => generateReadMe(response), (err) => (err ? console.error(err) : console.log("Success!"))
   );
+
+// Function to create the README page depending on the user input
+function generateReadMe(response) {
+    // Added to Sample folder for demo purposes, need to move to main folder for actual use
+    fs.writeFile('sample/README.md',
+`${renderLicense(response.license)}
+
+# ${response.title}
+
+## Description\n
+${response.description}
+
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributing](#contributing)
+- [Tests](#tests)
+- [Questions](#questions)
+
+## Installation\n
+Follow these steps to install and set up this application:
+1. ${response.installation}
+
+## Usage\n
+${response.usage}
+
+## License\n
+Application covered under the ${response.license} license.
+
+## Contributing\n
+${response.contribution}
+
+## Tests\n
+${response.testInstructions}
+
+## Questions\n
+Visit my GitHub profile: https://github.com/${response.username}\n
+For any questions, please reach out to me via email: ${response.email}`, 
+    (err) => err ? console.error(err) : console.log('Success!'));
+}
+
+// Returns the license URL to display badge depending on the license chosen
+function renderLicense(license){
+    let licenseURL = '';
+    switch (license){
+        case 'Apache license 2.0':
+            licenseURL = '![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)';
+            break;
+        case 'Boost Software License 1.0':
+            licenseURL = '![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)';
+            break;
+        case 'BSD 2-clause "Simplified" license':
+            licenseURL = '![License](https://img.shields.io/badge/License-BSD_2--Clause-orange.svg)';
+            break;
+        case 'BSD 3-clause "New" or "Revised" license':
+            licenseURL = '![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)';
+            break;
+        case 'Creative Commons Zero v1.0 Universal':
+            licenseURL = '![License: CC0-1.0](https://licensebuttons.net/l/zero/1.0/80x15.png)';
+            break;
+        case 'Eclipse Public License 2.0':
+            licenseURL = '![License](https://img.shields.io/badge/License-EPL_2.0-red.svg)';
+            break;
+        case 'GNU Affero General Public License v3.0':
+            licenseURL = '![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)';
+            break;
+        case 'GNU General Public License v2.0':
+            licenseURL = '![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)';
+            break;
+        case 'GNU Lesser General Public License v2.1':
+            licenseURL = '![License: LGPL v3](https://img.shields.io/badge/License-LGPL_v2.1-blue.svg)';
+            break;
+        case 'MIT':
+            licenseURL = '![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)';
+            break;
+        case 'Mozilla Public License 2.0':
+            licenseURL = '![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)';
+            break;
+        case 'The Unlicense':
+            licenseURL = '![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)';
+            break;
+    }
+    return licenseURL;
+}
