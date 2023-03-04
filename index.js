@@ -64,7 +64,7 @@ inquirer
     },
   ])
   .then((response) =>
-    fs.writeFile("log.txt", response, (err) =>
+    fs.writeFile("README.md", JSON.stringify(response), (err) =>
       err ? console.error(err) : console.log("Success!")
     )
   );
