@@ -31,7 +31,7 @@ inquirer
     {
       type: "input",
       message: "Test Instructions:",
-      name: "test-instructions",
+      name: "testInstructions",
     },
     {
       type: "list",
@@ -64,7 +64,18 @@ inquirer
     },
   ])
   .then((response) =>
-    fs.writeFile("README.md", JSON.stringify(response), (err) =>
-      err ? console.error(err) : console.log("Success!")
+    fs.writeFile("README.md", 
+`# ${response.title}\n
+## Description\n
+${response.description}\n
+## Installation\n
+${response.installation}\n
+## Usage\n
+${response.usage}\n
+## Contributing\n
+${response.contribution}\n
+## Tests\n
+${response.testInstructions}`, 
+    (err) => err ? console.error(err) : console.log("Success!")
     )
   );
