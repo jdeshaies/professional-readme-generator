@@ -70,7 +70,8 @@ inquirer
 
 // Function to create the README page depending on the user input
 function generateReadMe(response) {
-    fs.writeFile('README.md',
+    // Added to Sample folder for demo purposes, need to move to main folder for actual use
+    fs.writeFile('sample/README.md',
 `${renderLicense(response.license)}
 
 # ${response.title}
