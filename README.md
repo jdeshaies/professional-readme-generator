@@ -23,7 +23,8 @@ In order to use this application, install the following:
 
 Use this application when you want to generate a professional README file for your project.
 
-INCLUDE VIDEO RECORDING OF APPLICATION HERE
+Click this link to see a video walkthrough of a sample README file generated: 
+https://drive.google.com/file/d/165pWVBMiMLnqr3Mgz4JDj1XJdRhC9viO/view
 
 
 ## License
