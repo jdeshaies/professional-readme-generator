@@ -26,6 +26,7 @@ Use this application when you want to generate a professional README file for yo
 Click this link to see a video walkthrough of a sample README file generated: 
 https://drive.google.com/file/d/165pWVBMiMLnqr3Mgz4JDj1XJdRhC9viO/view
 
+![alt text](assets/images/screenshot.png)
 
 ## License
 
